@@ -31,6 +31,7 @@ const timeDisplay = document.querySelector('#time');
 const message = document.querySelector('#message');
 const seconds = document.querySelector('#seconds');
 
+// ACCESSING DATABASE 
 function getQuotes() {
     fetch(url)
         .then(resp => resp.json())
@@ -38,12 +39,17 @@ function getQuotes() {
             getQuoteToDom(json);
         })
 }
-
+// IMPORTING THE RANDOM QUOTE TO DOM
+let wordCount
 function getQuoteToDom(array) { // RANDOM QUOTE TO DOM 
     const randIndex = Math.floor(Math.random() * array.length); //random INDEX 
     currentWord.innerHTML = array[randIndex].quote // DISPLAYING QUOTE INTO DOM
-}
+    wordCount = array[randIndex].quote.split(' ').length
+    console.log(array[randIndex].quote) // String
+    console.log(wordCount) // Word Count
 
+}
+// TIMER SETUP
 let clock
 function stopwatch() {
     clock = setInterval(function () {
@@ -54,3 +60,7 @@ function stopwatch() {
 function stop(){
     clearInterval(clock)
 }
+
+// WPM LOGIC 
+// GET STRING FROM IMPORT SECTION
+// REGEX FOR SPACES TO DISTINGUISH WORDS 
