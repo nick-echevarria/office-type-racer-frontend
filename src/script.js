@@ -1,6 +1,17 @@
 window.addEventListener('load', init);
 
+// window.scroll(function() {
+//   if(window.scrollTop() + window.height() == document.height()) {
+//     revealLogInForm();
+//   }
+// });
+
 // Globals
+
+const headers = {
+  "Content/Type" : "application/json",
+  "accept" : "application/json"
+  }
 
 // Available Levels
 const levels = {
@@ -24,34 +35,6 @@ const timeDisplay = document.querySelector('#time');
 const message = document.querySelector('#message');
 const seconds = document.querySelector('#seconds');
 
-const words = [
-    'hat',
-    'river',
-    'lucky',
-    'statue',
-    'generate',
-    'stubborn',
-    'cocktail',
-    'runaway',
-    'joke',
-    'developer',
-    'establishment',
-    'hero',
-    'javascript',
-    'nutrition',
-    'revolver',
-    'echo',
-    'siblings',
-    'investigate',
-    'horrendous',
-    'symptom',
-    'laughter',
-    'magic',
-    'master',
-    'space',
-    'definition'
-];
-
 // Initialize Game
 function init() {
     // Show number of seconds in UI
@@ -64,6 +47,8 @@ function init() {
     setInterval(countdown, 1000);
     // Check game status
     setInterval(checkStatus, 50);
+    setInterval(revealLogInForm, 3000) // NICK
+    setInterval(listenForUsername, 3500) // NICK
 }
 
 // Start match
@@ -143,12 +128,22 @@ function listenForUsername() {
 
 function revealLogInForm() {
   const form = document.querySelector(".form")
-  if (form.style.display === "none") { 
-    form.style.display = "block"    
-  } else if (form.style.display === "block") { 
-    form.style.display = "none"
-  }
+  form.style.display = "block"
+  // if (form.style.display === "none") { 
+  //   form.style.display = "block"    
+  // } else if (form.style.display === "block") { 
+  //   form.style.display = "none"
+  // }
 }
+
+// function getDocHeight() {
+//   var d = document;
+//   return Math.max(
+//       d.body.scrollHeight, d.documentElement.scrollHeight,
+//       d.body.offsetHeight, d.documentElement.offsetHeight,
+//       d.body.clientHeight, d.documentElement.clientHeight
+//   );
+// }
 
     
 
