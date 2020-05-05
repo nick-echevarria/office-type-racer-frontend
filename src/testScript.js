@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", event => {
         })
     });
 
-    wordInput.addEventListener('click', stopwatch)                  // Starst Timer
+    wordInput.addEventListener('click', stopwatch)                  // Start Timer
     wordInput.addEventListener('keypress',event => {                // Stops Timer 
         if(event.keyCode == 13){                                   
             stop()                                                  // Stops time and shows WPM... find a place to put it

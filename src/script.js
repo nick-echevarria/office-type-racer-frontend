@@ -127,7 +127,6 @@ function listenForUsername() {
 }
 
 function revealLogInForm() {
-<<<<<<< HEAD
   const form = document.querySelector(".form")
   form.style.display = "block"
   // if (form.style.display === "none") { 
@@ -147,15 +146,4 @@ function revealLogInForm() {
 // }
 
     
-=======
-    const form = document.querySelector(".form")
-    if (form.style.display === "none") {
-        form.style.display = "block"
-    } else if (form.style.display === "block") {
-        form.style.display = "none"
-    }
-}
-
-
->>>>>>> d458587c2225b5e1c01279c0b1c7bc94b2e36006
 
