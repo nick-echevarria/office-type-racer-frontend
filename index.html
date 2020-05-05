@@ -8,16 +8,23 @@
     <title>WordBeater</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <style>
+        .form { 
+            display: none
+        }
+    </style>    
+
 </head>
 
 <body class="bg-dark text-white ">
     <header class="bg-secondary text-center p-3 mb-5">
-        <h1>WordBeater</h1>
+        <h1>The Office Typing Racer</h1>
     </header>
     <div class="container text-center">
 
-        <form autocomplete="off" id="login-form" class="" action="index.html" method="post">
-            <h3>Welcome to Dunder Mifflin. Enter your username!</h3>
+        <form id="login-form" class="form" action="index.html" method="post">
+            <h3>Welcome to Dunder Mifflin! <br> <br> Enter your username for the company intranet:</h3>
             <input id="login-field" type="text" name="" value="" placeholder="Username">
             <br><br>
             <input type="submit" id="login-submit">

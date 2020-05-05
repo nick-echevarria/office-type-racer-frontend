@@ -1,15 +1,13 @@
-// document.addEventListener("DOMContentLoaded", init)
-
-// function init() { 
-//     loadGame() // "Loading" animations + all the stuff that we show first while the rest of init loads
-//     buttonSetup() // Self-explanatory
-//     startGame() // Timer/Load quotes
-//     logGame() // Saving stats (username/completion time/score)
-// }
-
 document.addEventListener('DOMContentLoaded', init);
 
-// Globals
+// Global Variables
+
+const headers = {
+  "Content/Type" : "application/json",
+  "accept" : "application/json"
+}
+
+let currentUsername
 
 // Available Levels
 const levels = {
@@ -33,34 +31,6 @@ const timeDisplay = document.querySelector('#time');
 const message = document.querySelector('#message');
 const seconds = document.querySelector('#seconds');
 
-const words = [
-  'hat',
-  'river',
-  'lucky',
-  'statue',
-  'generate',
-  'stubborn',
-  'cocktail',
-  'runaway',
-  'joke',
-  'developer',
-  'establishment',
-  'hero',
-  'javascript',
-  'nutrition',
-  'revolver',
-  'echo',
-  'siblings',
-  'investigate',
-  'horrendous',
-  'symptom',
-  'laughter',
-  'magic',
-  'master',
-  'space',
-  'definition'
-];
-
 // Initialize Game
 function init() {
   // Show number of seconds in UI
@@ -73,6 +43,8 @@ function init() {
   setInterval(countdown, 1000);
   // Check game status
   setInterval(checkStatus, 50);
+  setInterval(revealLogInForm, 3000);
+  setInterval(listenForUsername, 3500)
 }
 
 // Start match
@@ -112,6 +84,8 @@ function showWord(words) {
   currentWord.innerHTML = words[randIndex];
 }
 
+const words = ["seven", "eight"]
+
 // Countdown timer
 function countdown() {
   // Make sure time is not run out
@@ -134,23 +108,28 @@ function checkStatus() {
   }
 }
 
-// NICK'S CODE 
-function setUsername(form) { 
-    //Prompt form pop up
-    // let userInput = document.querySelector(" ")
+function listenForUsername() {
+  const form = document.querySelector(".form")
+  form.addEventListener("submit", (e) => { 
+    event.preventDefault(); 
     fetch("https://127.0.0.1:3000/users", {
-        method: "POST", 
-        headers, 
-        body: JSON.stringify({username: e.target.input.value})
+      method: "POST", 
+      headers, 
+      body: JSON.stringify({username: e.target.input.value})
     })
     .then(resp => resp)
-    .then(data => console.log(data)) //render username somewhere on screen 
-
-    //Return user input to use as argument for logGame() 
+    .then(data => console.log(data)) //Save data value to username global  
+  })
 }
 
-// function toggleLogInForm() { 
-//     const form = document.querySelector("#login-form")
-//     form.style.display = 
-// }
+function revealLogInForm() {
+  const form = document.querySelector(".form")
+  if (form.style.display === "none") { 
+    form.style.display = "block"    
+  } else if (form.style.display === "block") { 
+    form.style.display = "none"
+  }
+}
+
+    
 
