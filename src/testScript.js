@@ -6,13 +6,13 @@ document.addEventListener("DOMContentLoaded", event => {
             message.innerHTML = 'Correct!!!';
             return true;
         } else {
-            message.innerHTML = '';
+            message.innerHTML = 'Back up';
             return false;
         }
     });
 
-    wordInput.addEventListener('click', stopwatch)
-    wordInput.addEventListener('keypress',event => {
+    wordInput.addEventListener('click', stopwatch) // Starst Timer
+    wordInput.addEventListener('keypress',event => { // Stops Timer 
         if(event.keyCode == 13){
             stop()
         }
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", event => {
 
 })
 
-let timer = 0
+
 // URLs
 const url = `http://127.0.0.1:3000/quotes`
 // DOM Elements
@@ -50,6 +50,7 @@ function getQuoteToDom(array) { // RANDOM QUOTE TO DOM
 
 }
 // TIMER SETUP
+let timer = 0
 let clock
 function stopwatch() {
     clock = setInterval(function () {
@@ -58,9 +59,18 @@ function stopwatch() {
     }, 1000)
 }
 function stop(){
-    clearInterval(clock)
+    clearInterval(clock) // STOPS the timer but does not clear it 
+    wpm()
 }
 
 // WPM LOGIC 
 // GET STRING FROM IMPORT SECTION
 // REGEX FOR SPACES TO DISTINGUISH WORDS 
+// Find a place for this in the DOM
+function wpm(){
+    let wpm = (wordCount/timer) *60
+    console.log(wpm)
+} 
+
+
+// Create logic for validating the user input matches the string 
