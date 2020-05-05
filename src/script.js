@@ -74,8 +74,6 @@ function matchWords() {
     message.innerHTML = '';
     return false;
   }
-}
-
 // Pick & show random word
 function showWord(words) {
   // Generate random array index
@@ -130,6 +128,3 @@ function revealLogInForm() {
     form.style.display = "none"
   }
 }
-
-    
-
