@@ -15,12 +15,14 @@ const timeDisplay = document.querySelector('#time');                // Time
 const message = document.querySelector('#message');                 // Message *May Delete
 const seconds = document.querySelector('#time');
 const usernameDisplay = document.querySelector('#username')
+let form = document.querySelector(".form")
+let currentUsername = document.querySelector(".text-success")
+
 // D E C L A R A T I O N S 
 let wordCount
 let characterSpan
-let form = document.querySelector(".form")
-
-
+let timer = 0
+let clock
 
 document.addEventListener("DOMContentLoaded", () => {
   //Main function
@@ -28,11 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
   toggleLogInForm()                                                 //Add logic to have username form pop when users reaches bottom of window
   formSetup()                                                       // Set up submit form for username 
 
-  // Red and Green Validation 
-
+  // I N P U T  V A L I D A T I O N
   wordInput.addEventListener('input', () => {
     const arrayQuote = currentWord.querySelectorAll('span')
     const arrayValue = wordInput.value.split('')
+
     arrayQuote.forEach((characterSpan, index) => {
       let letter = arrayValue[index]
       if (letter == null) {                                     // If they haven't typed anything out yet 
@@ -47,22 +49,36 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     })
   });
-  // START AND STOP CLOCK 
 
+  // S T A R T / S T O P  G A M E  C L O C K 
   wordInput.addEventListener('click', event =>{
     if(username == null){
       alert('Create Username')
     }else{
       stopwatch()
     }
-  })                    // Start Timer
+  })
+
+  // T I M E R  S T A R T 
   wordInput.addEventListener('keypress', event => {                 // Stops Timer 
     if (event.keyCode == 13) {
       stop()                                                        // Stops time and shows WPM... find a place to put it
     }
-  })
+  }) 
 
- 
+ // P O S T  R O U N D S
+  function logGame() { 
+    fetch(roundsUrl, {
+        method: "POST", 
+        headers, 
+        body: JSON.stringify({
+            user_id: parseInt(currentUsername.dataset.id),
+            quote_id: parseInt(currentWord.dataset.id), 
+            score: parseInt(scoreDisplay.textContent), 
+            completion_time: parseInt(timeDisplay.textContent)
+        })
+    })
+  }
 
   function toggleLogInForm() {
     let form = document.querySelector(".form")
@@ -84,8 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .then(resp => resp.json())
       .then(data => {
-        console.log(data)
-        usernameDisplay.innerText = data.username
+        usernameDisplay.innerText = ` ${data.username}!`
         usernameDisplay.dataset.id = data.id
       })
       .catch(function(error){
@@ -94,30 +109,14 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 
-  // function buttonSetup() {
-
-  // }
-
-  // function startGame() {
-
-  // }
-
-  // function logGame() { 
-  //      fetch(get username from last object)
-
-  // }
-
-  // J O H N S O N 
-
-  // ACCESSING DATABASE 
+  // G E T  A L L  Q U O T E S
   function getQuotes() {
     fetch(quotesUrl)
       .then(resp => resp.json())
       .then(json => {
         getQuoteToDom(json);
       })
-  }
-  
+  }  
 
   async function getQuoteToDom(array) {                           // APPEND QUOTE TO DOM 
     const randIndex = Math.floor(Math.random() * array.length); //random INDEX to randomly choose quote from json array
@@ -135,21 +134,22 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(quote)
     console.log(wordCount)
   }
+
   // T I M E R 
-  let timer = 0
-  let clock
   function stopwatch() {
     clock = setInterval(function () {
       timer += 1
       seconds.innerText = timer
     }, 1000)
   }
+
   function stop() {
     clearInterval(clock)                                        // STOPS the timer
-    wpm()                                                       // When timer stops, do WPM logic
+    wpm()       
+    logGame()                                                // When timer stops, do WPM logic
   }
-  // WPM LOGIC 
 
+  // WPM LOGIC 
   function wpm() {
     let wpm = (wordCount / timer) * 60
     scoreDisplay.innerText = Math.round(wpm)
