@@ -7,6 +7,7 @@ const headers = {
   "Content/Type" : "application/json",
   "accept" : "application/json"
 }
+const usersUrl = "https://127.0.0.1:3000/users"
 
 // DOM Elements
 
@@ -34,7 +35,7 @@ function revealLogInForm() {
 function formSetup() {
   form.addEventListener("submit", (e) => { 
     event.preventDefault(); 
-    fetch("https://127.0.0.1:3000/users", {
+    fetch(usersUrl, {
       method: "POST", 
       headers, 
       body: JSON.stringify({username: e.target.input.value})
