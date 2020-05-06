@@ -58,15 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     })
   });
-
-  // S T A R T / S T O P  G A M E  C L O C K 
-  wordInput.addEventListener('click', event =>{
-    if(currentUsername.innerText === '...'){ 
-      alert('Create Username')
-    }else{
-      stopwatch()                                                       //
-    }
-  })
  
 
  // P O S T  R O U N D S
@@ -161,19 +152,23 @@ document.addEventListener("DOMContentLoaded", () => {
     let wpm = (wordCount / timer) * 60
     scoreDisplay.innerText = Math.round(wpm)
   }
+
+    // P R E - G A M E  C O U N T D O W N
+    function countdown(){   
+        let cdTimer = 5                                      // Called when user is created
+        const cd = setInterval(function() {                             // decrement by 1 
+        cdTimer -= 1
+        countdownElement.innerText = cdTimer   
+        if (cdTimer === 0) { 
+            wordInput.disabled = false
+            clearInterval(cd)
+            stopwatch()
+        }                   // append to DOM
+    }, 1000)
+    }
+
 })
 
-// P R E - G A M E  C O U N T D O W N
-function countdown(){   
-    let cdTimer = 5                                      // Called when user is created
-    const cd = setInterval(function() {                             // decrement by 1 
-    cdTimer -= 1
-    countdownElement.innerText = cdTimer   
-    if (cdTimer === 0) { 
-        wordInput.disabled = false
-        clearInterval(cd)
-    }                   // append to DOM
-  }, 1000)
-}
+
 
 
