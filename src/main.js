@@ -18,6 +18,7 @@ const usernameDisplay = document.querySelector('#username')
 let form = document.querySelector(".form")
 let currentUsername = document.querySelector(".text-success")
 let replayButton = document.querySelector('#replay')
+let countdownElement = document.querySelector('#countdown')
 
 // D E C L A R A T I O N S 
 let wordCount
@@ -25,6 +26,8 @@ let characterSpan
 let timer = 0
 let clock
 let quote
+wordInput.disabled = true
+
 
 document.addEventListener("DOMContentLoaded", () => {
   //Main function
@@ -47,34 +50,24 @@ document.addEventListener("DOMContentLoaded", () => {
         characterSpan.classList.add('correct')                  // make it green 
         characterSpan.classList.remove('incorrect')
         if(characterSpan == lastLetter){
-          stop()
+          stop()                                                // T I M E R   S T O P  
         }
       } else {
         characterSpan.classList.remove('correct')               // if what they type is incorrect
         characterSpan.classList.add('incorrect')                // make it red
       }
-      
-      // if (){                     // When it reaches the last letter, stop the game
-      //   stop()                                                  // FIX if any character matches the last letter, it will stop
-      // }
     })
   });
 
   // S T A R T / S T O P  G A M E  C L O C K 
   wordInput.addEventListener('click', event =>{
-    if(currentUsername.innerText === '...'){
+    if(currentUsername.innerText === '...'){ 
       alert('Create Username')
     }else{
-      stopwatch()
+      stopwatch()                                                       //
     }
   })
-
-  // T I M E R  S T O P 
-  // wordInput.addEventListener('keypress', event => {                 // Stops Timer 
-  //   if (event.keyCode == 13) {
-  //     stop()                                                        
-  //   }
-  // }) 
+ 
 
  // P O S T  R O U N D S
   function logGame() { 
@@ -97,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let form = document.querySelector(".form")
     form.style.display = "block"
   }
-  
+  // C R E A T E   U S E R N A M E
   function formSetup() {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -115,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(data => {
         usernameDisplay.innerText = ` ${data.username}!`              // USERNAME LOCATION
         usernameDisplay.dataset.id = data.id                          // USERNAME ID LOCATION
+        countdown()
       })
       .catch(function(error){
           console.log(error.message)
@@ -163,11 +157,27 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // WPM LOGIC 
-  function wpm() {
+  function wpm() {                                               // Word Count divided by Timer value
     let wpm = (wordCount / timer) * 60
     scoreDisplay.innerText = Math.round(wpm)
   }
-
 })
+
+// C O U N T D O W N 
+let cdTimer = 5
+let cd
+function countdown(){                                         // Called when user is created
+    cd = setInterval(function() {                             // decrement by 1 
+    cdTimer -= 1
+    countdownElement.innerText = cdTimer                      // append to DOM
+  }, 1000)
+}
+
+function stopCountDown(cd){
+  if (cdTimer === 0){                                           // Once Timer = 0, stop the countdown 
+    wordInput.disabled = false
+    clearInterval(cd)
+  }
+}
 
 
