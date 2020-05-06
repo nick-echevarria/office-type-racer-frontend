@@ -17,6 +17,7 @@ const seconds = document.querySelector('#time');
 const usernameDisplay = document.querySelector('#username')
 let form = document.querySelector(".form")
 let currentUsername = document.querySelector(".text-success")
+let replayButton = document.querySelector('#replay')
 
 // D E C L A R A T I O N S 
 let wordCount
@@ -36,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const arrayQuote = currentWord.querySelectorAll('span')
     const arrayValue = wordInput.value.split('')
     let lastLetter = currentWord.lastChild
+    lastLetter.dataset.last = true
     arrayQuote.forEach((characterSpan, index) => {
       let letter = arrayValue[index]
       if (letter == null) {                                     // If they haven't typed anything out yet 
@@ -44,14 +46,17 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (letter === characterSpan.innerText) {          // If what they type out is correct
         characterSpan.classList.add('correct')                  // make it green 
         characterSpan.classList.remove('incorrect')
+        if(characterSpan == lastLetter){
+          stop()
+        }
       } else {
         characterSpan.classList.remove('correct')               // if what they type is incorrect
         characterSpan.classList.add('incorrect')                // make it red
       }
       
-      if (letter === lastLetter.innerText){                     // When it reaches the last letter, stop the game
-        stop()                                                  // FIX if any character matches the last letter, it will stop
-      }
+      // if (){                     // When it reaches the last letter, stop the game
+      //   stop()                                                  // FIX if any character matches the last letter, it will stop
+      // }
     })
   });
 
