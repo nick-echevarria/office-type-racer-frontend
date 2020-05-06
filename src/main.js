@@ -173,7 +173,7 @@ function countdown(){                                         // Called when use
   }, 1000)
 }
 
-function stopCountDown(cd){
+function stopCountDown(){
   if (cdTimer === 0){                                           // Once Timer = 0, stop the countdown 
     wordInput.disabled = false
     clearInterval(cd)
