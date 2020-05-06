@@ -156,28 +156,24 @@ document.addEventListener("DOMContentLoaded", () => {
     logGame()                                                   // POST to ROUNDS API
   }
 
-  // WPM LOGIC 
+  // W P M  L O G I C  
   function wpm() {                                               // Word Count divided by Timer value
     let wpm = (wordCount / timer) * 60
     scoreDisplay.innerText = Math.round(wpm)
   }
 })
 
-// C O U N T D O W N 
-let cdTimer = 5
-let cd
-function countdown(){                                         // Called when user is created
-    cd = setInterval(function() {                             // decrement by 1 
+// P R E - G A M E  C O U N T D O W N
+function countdown(){   
+    let cdTimer = 5                                      // Called when user is created
+    const cd = setInterval(function() {                             // decrement by 1 
     cdTimer -= 1
-    countdownElement.innerText = cdTimer                      // append to DOM
+    countdownElement.innerText = cdTimer   
+    if (cdTimer === 0) { 
+        wordInput.disabled = false
+        clearInterval(cd)
+    }                   // append to DOM
   }, 1000)
-}
-
-function stopCountDown(){
-  if (cdTimer === 0){                                           // Once Timer = 0, stop the countdown 
-    wordInput.disabled = false
-    clearInterval(cd)
-  }
 }
 
 
