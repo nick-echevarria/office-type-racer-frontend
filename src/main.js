@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   wordInput.addEventListener('input', () => {
     const arrayQuote = currentWord.querySelectorAll('span')
     const arrayValue = wordInput.value.split('')
-
+    let lastLetter = currentWord.lastChild
     arrayQuote.forEach((characterSpan, index) => {
       let letter = arrayValue[index]
       if (letter == null) {                                     // If they haven't typed anything out yet 
@@ -48,8 +48,10 @@ document.addEventListener("DOMContentLoaded", () => {
         characterSpan.classList.remove('correct')               // if what they type is incorrect
         characterSpan.classList.add('incorrect')                // make it red
       }
-
-      // if letter == last let
+      
+      if (letter === lastLetter.innerText){                     // When it reaches the last letter, stop the game
+        stop()                                                  // FIX if any character matches the last letter, it will stop
+      }
     })
   });
 
@@ -63,11 +65,11 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
   // T I M E R  S T O P 
-  wordInput.addEventListener('keypress', event => {                 // Stops Timer 
-    if (event.keyCode == 13) {
-      stop()                                                        
-    }
-  }) 
+  // wordInput.addEventListener('keypress', event => {                 // Stops Timer 
+  //   if (event.keyCode == 13) {
+  //     stop()                                                        
+  //   }
+  // }) 
 
  // P O S T  R O U N D S
   function logGame() { 
