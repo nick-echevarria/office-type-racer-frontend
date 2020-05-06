@@ -23,6 +23,7 @@ let wordCount
 let characterSpan
 let timer = 0
 let clock
+let quote
 
 document.addEventListener("DOMContentLoaded", () => {
   //Main function
@@ -47,6 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
         characterSpan.classList.remove('correct')               // if what they type is incorrect
         characterSpan.classList.add('incorrect')                // make it red
       }
+
+      // if letter == last let
     })
   });
 
@@ -59,10 +62,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })
 
-  // T I M E R  S T A R T 
+  // T I M E R  S T O P 
   wordInput.addEventListener('keypress', event => {                 // Stops Timer 
     if (event.keyCode == 13) {
-      stop()                                                        // Stops time and shows WPM... find a place to put it
+      stop()                                                        
     }
   }) 
 
@@ -75,7 +78,10 @@ document.addEventListener("DOMContentLoaded", () => {
             user_id: parseInt(currentUsername.dataset.id),
             quote_id: parseInt(currentWord.dataset.id), 
             score: parseInt(scoreDisplay.textContent), 
-            completion_time: parseInt(timeDisplay.textContent)
+            completion_time: parseInt(timeDisplay.textContent),
+            user: {id:parseInt(currentUsername.dataset.id), username: currentUsername.innerText},
+            quote: {id:parseInt(currentWord.dataset.id), quote: quote}
+
         })
     })
   }
@@ -100,8 +106,8 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .then(resp => resp.json())
       .then(data => {
-        usernameDisplay.innerText = ` ${data.username}!`
-        usernameDisplay.dataset.id = data.id
+        usernameDisplay.innerText = ` ${data.username}!`              // USERNAME LOCATION
+        usernameDisplay.dataset.id = data.id                          // USERNAME ID LOCATION
       })
       .catch(function(error){
           console.log(error.message)
@@ -119,16 +125,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }  
 
   async function getQuoteToDom(array) {                           // APPEND QUOTE TO DOM 
-    const randIndex = Math.floor(Math.random() * array.length); //random INDEX to randomly choose quote from json array
+    const randIndex = Math.floor(Math.random() * array.length);   //random INDEX to randomly choose quote from json array
     let pick = array[randIndex] 
-    let quote = pick.quote
-    wordCount = quote.split(' ').length                         // Integer that represents number of words in a string 
+    quote = pick.quote
+    wordCount = quote.split(' ').length                           // Integer that represents number of words in a string 
 
     quote.split('').forEach(character => {
       characterSpan = document.createElement('span')          // create span tag for each letter
       characterSpan.innerText = character                     // append letter to span 
       currentWord.appendChild(characterSpan)                  // append entire element to div
-      currentWord.dataset.id = pick.id
+      currentWord.dataset.id = pick.id                        // quote ID location
     })
     wordInput.value = null
     console.log(quote)
@@ -136,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // T I M E R 
-  function stopwatch() {
+  function stopwatch() {                                      // TIMER LOGIC 
     clock = setInterval(function () {
       timer += 1
       seconds.innerText = timer
@@ -145,8 +151,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function stop() {
     clearInterval(clock)                                        // STOPS the timer
-    wpm()       
-    logGame()                                                // When timer stops, do WPM logic
+    wpm()                                                       // When timer stops, do WPM logic
+    logGame()                                                   // POST to ROUNDS API
   }
 
   // WPM LOGIC 
