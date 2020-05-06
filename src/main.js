@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // S T A R T / S T O P  G A M E  C L O C K 
   wordInput.addEventListener('click', event =>{
-    if(username == null){
+    if(currentUsername.innerText === '...'){
       alert('Create Username')
     }else{
       stopwatch()
