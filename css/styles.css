@@ -81,19 +81,22 @@ h3 { /* div 5 */
 
 #login-field { /* div 5 */
     position: relative; 
-    top: 85px;
+    top: 25px;
     left: 25px;
     text-align: center
 } 
 
 #login-submit { /* div 5 */
     position: relative; 
-    top: 85px;
+    top: 25px;
     left: 65px
 } 
+
+#username-text { 
+    text-align: center
+}
 
 #replay { 
     position: relative;
     left: 240px
-
 }

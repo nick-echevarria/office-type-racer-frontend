@@ -19,6 +19,7 @@ let form = document.querySelector(".form");
 let currentUsername = document.querySelector(".text-success");
 let replayButton = document.querySelector("#replay");
 let countdownElement = document.querySelector("#countdown");
+let welcomeMessage = document.querySelector(".lead")
 
 // D E C L A R A T I O N S
 let wordCount;
@@ -95,6 +96,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function toggleWelcomeMessage() {
+    if (welcomeMessage.style.display === "none") {
+      welcomeMessage.style.display = "block";
+    } else {
+      welcomeMessage.style.display = "none";
+    }
+  }
+
+  
+
   // R E P L A Y  B U T T O N  L I S T E N E R
 
   replayButton.addEventListener("click", (e) => {
@@ -127,6 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
           usernameDisplay.dataset.id = data.id; // USERNAME ID LOCATION
           countdown();
           toggleLogInForm();
+          toggleWelcomeMessage();
         })
         .catch(function (error) {
           console.log(error.message);
