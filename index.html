@@ -16,7 +16,7 @@
 
         <div class= 'typewriter'>
             <header class="bg-secondary text-center p-3 mb-5">
-                <h1 class='typewriter ' style="font-size:5vw"> The Office Typing Racer</h1>
+                <h1 class='typewriter ' style="font-size:5vw"> <u>The Office</u> <br> Typing Racer</h1>
             </header>
         </div>
 
@@ -27,9 +27,9 @@
         <div class="Quote-Display" id="current-word"></div>
 
         <div class = 'Quote-Input'>
-            <p class="lead">Dundler Mifflin welcomes you,<span class="text-success" id="username"> ...</span></p>
-            <div id='countdown-container'> Starting in: <span id='countdown'>5</span> </div>
-            <input type="text" class="form-control form-control-lg" placeholder="Start typing..." id="word-input" autofocus>
+            <p class="lead" style="display: none;">Dunder Mifflin welcomes you,<span class="text-success" id="username">...</span></p>
+            <div id='countdown-container'> Get ready! Start typing in: <span id='countdown'>5</span> </div>
+            <input type="text" class="form-control form-control-lg" placeholder="Type the quote here!" id="word-input" autofocus>
             <h4 class="mt-3" id="message"></h4>
             <!-- Replay Button-->
                 <div id="replay-container">
@@ -61,7 +61,10 @@
 
             <div class = 'formCSS'>
                 <form id="login-form" class="form" action="index.html" method="post" style="display: none;">
-                    <h3>Welcome to Dunder Mifflin! <br> <br> Enter your username for the company intranet:</h3>
+                    <h3>Welcome to Dunder Mifflin!</h3>
+                    <br>
+                    <br>
+                    <p id="username-text">Enter your username for the company intranet:</p>
                     <input id="login-field" type="text" name="" value="" placeholder="Username">
                     <br><br>
                     <input type="submit" id="login-submit">
