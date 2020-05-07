@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (letter === characterSpan.innerText) {          // If what they type out is correct
         characterSpan.classList.add('correct')                  // make it green 
         characterSpan.classList.remove('incorrect')
-        if(characterSpan == lastLetter){
+        if (characterSpan == lastLetter) {
           stop()                                                // T I M E R   S T O P  
         }
       } else {
@@ -60,29 +60,29 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // S T A R T / S T O P  G A M E  C L O C K 
-  wordInput.addEventListener('click', event =>{
-    if(currentUsername.innerText === '...'){ 
+  wordInput.addEventListener('click', event => {
+    if (currentUsername.innerText === '...') {
       alert('Create Username')
-    }else{
+    } else {
       stopwatch()                                                       //
     }
   })
- 
 
- // P O S T  R O U N D S
-  function logGame() { 
+
+  // P O S T  R O U N D S
+  function logGame() {
     fetch(roundsUrl, {
-        method: "POST", 
-        headers, 
-        body: JSON.stringify({
-            user_id: parseInt(currentUsername.dataset.id),
-            quote_id: parseInt(currentWord.dataset.id), 
-            score: parseInt(scoreDisplay.textContent), 
-            completion_time: parseInt(timeDisplay.textContent),
-            user: {id:parseInt(currentUsername.dataset.id), username: currentUsername.innerText},
-            quote: {id:parseInt(currentWord.dataset.id), quote: quote}
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        user_id: parseInt(currentUsername.dataset.id),
+        quote_id: parseInt(currentWord.dataset.id),
+        score: parseInt(scoreDisplay.textContent),
+        completion_time: parseInt(timeDisplay.textContent),
+        user: { id: parseInt(currentUsername.dataset.id), username: currentUsername.innerText },
+        quote: { id: parseInt(currentWord.dataset.id), quote: quote }
 
-        })
+      })
     })
   }
 
@@ -101,18 +101,18 @@ document.addEventListener("DOMContentLoaded", () => {
         method: "POST",
         headers,
         body: JSON.stringify({
-          username: username 
+          username: username
         })
       })
-      .then(resp => resp.json())
-      .then(data => {
-        usernameDisplay.innerText = ` ${data.username}!`              // USERNAME LOCATION
-        usernameDisplay.dataset.id = data.id                          // USERNAME ID LOCATION
-        countdown()
-      })
-      .catch(function(error){
+        .then(resp => resp.json())
+        .then(data => {
+          usernameDisplay.innerText = ` ${data.username}!`              // USERNAME LOCATION
+          usernameDisplay.dataset.id = data.id                          // USERNAME ID LOCATION
+          countdown()
+        })
+        .catch(function (error) {
           console.log(error.message)
-      }) 
+        })
     })
   }
 
@@ -123,11 +123,11 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(json => {
         getQuoteToDom(json);
       })
-  }  
+  }
 
   async function getQuoteToDom(array) {                           // APPEND QUOTE TO DOM 
     const randIndex = Math.floor(Math.random() * array.length);   //random INDEX to randomly choose quote from json array
-    let pick = array[randIndex] 
+    let pick = array[randIndex]
     quote = pick.quote
     wordCount = quote.split(' ').length                           // Integer that represents number of words in a string 
 
@@ -164,14 +164,14 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 // P R E - G A M E  C O U N T D O W N
-function countdown(){   
-    let cdTimer = 5                                      // Called when user is created
-    const cd = setInterval(function() {                             // decrement by 1 
+function countdown() {
+  let cdTimer = 5                                      // Called when user is created
+  const cd = setInterval(function () {                             // decrement by 1 
     cdTimer -= 1
-    countdownElement.innerText = cdTimer   
-    if (cdTimer === 0) { 
-        wordInput.disabled = false
-        clearInterval(cd)
+    countdownElement.innerText = cdTimer
+    if (cdTimer === 0) {
+      wordInput.disabled = false
+      clearInterval(cd)
     }                   // append to DOM
   }, 1000)
 }
