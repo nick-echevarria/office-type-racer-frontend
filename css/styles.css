@@ -6,3 +6,9 @@
     color: red;
     text-decoration: underline;
 }
+
+.typewriter{
+    font-family: American Typewriter;
+    font-style: 300;
+    font-size: large;
+}
