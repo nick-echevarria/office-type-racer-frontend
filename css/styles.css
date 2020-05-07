@@ -29,7 +29,7 @@
 }   
 .Quote-Display { /* √ div 2 */
     grid-area: 4 / 2 / 5 / 5; 
-    background-color: teal;
+    background-color:black;
     text-align: center;
 }  
 .Quote-Input { /* √ div 3 */
