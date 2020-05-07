@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Office Olympics</title>
+        <link rel="stylesheet" href="css/styles2.css">
+</head>
+
+<body>
+    <div class="grid-container">
+
+        <div class="WPM">
+            <h3>Words Per Minute:
+                <span id="score">0</span>
+            </h3>
+        </div>
+
+        <div class="Timer">
+            <article class="clock">
+                <div class="hours-container">
+                  <div class="hours"></div>
+                </div>
+                <div class="minutes-container">
+                  <div class="minutes"></div>
+                </div>
+                <div class="seconds-container">
+                  <div class="seconds"></div>
+                </div>
+            </article>
+
+            <h3>Time:
+                <span id="time">0</span>
+            </h3>
+        </div>
+        
+        <div class="Quote-Display" id="current-word"></div>
+
+        <div class="Title">
+            <h1>The Office Typing Racer</h1>
+        </div>
+
+        <div class="Hi-Scores"></div>
+
+        <div class="Log-In">
+            <p class="lead">Dundler Mifflin welcomes you<span class="text-success" id="username">...</span></p>
+
+            <form id="login-form" class="form" action="index.html" method="post" style="display: none;">
+                <h3>Welcome to Dunder Mifflin! <br> <br> Enter your username for the company intranet:</h3>
+                <input id="login-field" type="text" name="" value="" placeholder="Username">
+                <br><br>
+                <input type="submit" id="login-submit">
+                <br><br>
+            </form>
+
+            <div id="replay-container">
+                <button style="display: none;" id='replay'>Wanna take another crack at it?</button>
+            </div>
+        </div>
+
+        <div class="Quote-Input">
+            <input 
+                type="text" class="form-control form-control-lg" placeholder="Start typing..." id="word-input" autofocus>
+            </input>
+        </div>
+
+        <div class="Michael-Scott\ Picture"></div>
+    </div>
+    <script defer src="src/main.js"></script>
+</body>
+
+</html>

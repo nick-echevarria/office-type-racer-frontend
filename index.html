@@ -20,27 +20,20 @@
             </header>
         </div>
 
-        <div class= 'formCSS'> 
-            <form id="login-form" class="form" action="index.html" method="post" style="display: none;">
-                <h3>Welcome to Dunder Mifflin! <br> <br> Enter your username for the company intranet:</h3>
-                <input id="login-field" type="text" name="" value="" placeholder="Username">
-                <br><br>
-                <input type="submit" id="login-submit">
-                <br><br>
-            </form>
+        <div class= 'Hi-Scores'> 
         </div>
 
         <!-- Word & Input -->
         <div class="Quote-Display" id="current-word"></div>
 
         <div class = 'Quote-Input'>
-            <p class="lead">Dundler Mifflin welcomes you<span class="text-success" id="username">...</span></p>
-            <div id='countdown-container'> Starting in:<span id='countdown'>5</span> </div>
+            <p class="lead">Dundler Mifflin welcomes you,<span class="text-success" id="username"> ...</span></p>
+            <div id='countdown-container'> Starting in: <span id='countdown'>5</span> </div>
             <input type="text" class="form-control form-control-lg" placeholder="Start typing..." id="word-input" autofocus>
             <h4 class="mt-3" id="message"></h4>
             <!-- Replay Button-->
                 <div id="replay-container">
-                    <button style="display: none;" id='replay'> Replay, Loser.</button>
+                    <button style="display: none;" id='replay'> Replay, loser.</button>
                 </div>
                 <div class="card card-body bg-secondary text-white">
                     <h5>Instructions</h5>
@@ -66,7 +59,15 @@
                 <img src="https://i.imgur.com/lusVF4p.gif" alt="Office GIF" class = 'Jam'>
             </div>
 
-            <div class = 'Hi-Scores'></div>
+            <div class = 'formCSS'>
+                <form id="login-form" class="form" action="index.html" method="post" style="display: none;">
+                    <h3>Welcome to Dunder Mifflin! <br> <br> Enter your username for the company intranet:</h3>
+                    <input id="login-field" type="text" name="" value="" placeholder="Username">
+                    <br><br>
+                    <input type="submit" id="login-submit">
+                    <br><br>
+                </form>
+            </div>
         <!-- Instructions -->
         <script defer src="src/main.js"></script>
     </div>

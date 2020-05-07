@@ -34,11 +34,13 @@ span{
     background-color:black;
     color: white;
     font-size: 150%;
+    text-align: center;
 }  
 .Quote-Input { /* √ div 3 */
     grid-area: 5 / 2 / 6 / 5; 
     background-color: rgb(223, 130, 223);
     text-align: center;
+    
 }   
 .Office-Photo { /* div 4 */
     grid-area: 2 / 2 / 4 / 5; 
@@ -50,7 +52,7 @@ span{
     margin-right: auto;
     width: 100%;
 }
-.Hi-Scores { /* div 5 */
+.formCSS { /* div 5 */
     grid-area: 4 / 1 / 6 / 2; 
     background-color: mediumpurple;
 }  
@@ -65,8 +67,33 @@ span{
     background-color: peachpuff;
     text-align: center;
 }   
-.formCSS { /* div 8 */
+.Hi-Scores { /* div 8 */
     grid-area: 2 / 5 / 6 / 6; 
     background-color: powderblue;
     text-align: center;
 } 
+
+h3 { /* div 5 */
+    position: relative; 
+    top: 60px;
+    text-align: center;
+} 
+
+#login-field { /* div 5 */
+    position: relative; 
+    top: 85px;
+    left: 25px;
+    text-align: center
+} 
+
+#login-submit { /* div 5 */
+    position: relative; 
+    top: 85px;
+    left: 65px
+} 
+
+#replay { 
+    position: relative;
+    left: 240px
+
+}
