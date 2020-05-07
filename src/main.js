@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let lastLetter = currentWord.lastChild;
     lastLetter.dataset.last = true;
     arrayQuote.forEach((characterSpan, index) => {
-
       let letter = arrayValue[index];
       if (letter == null) {
         // If they haven't typed anything out yet
@@ -61,7 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-
   // P O S T  R O U N D S
   function logGame() {
     fetch(roundsUrl, {
@@ -72,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
         quote_id: parseInt(currentWord.dataset.id),
         score: parseInt(scoreDisplay.textContent),
         completion_time: parseInt(timeDisplay.textContent),
-
         user: {
           id: parseInt(currentUsername.dataset.id),
           username: currentUsername.innerText,
@@ -143,7 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((resp) => resp.json())
       .then((json) => {
         getQuoteToDom(json);
-
       });
   }
 
@@ -187,21 +183,6 @@ document.addEventListener("DOMContentLoaded", () => {
       seconds.innerText = timer;
     }, 1000);
   }
-
-})
-
-// P R E - G A M E  C O U N T D O W N
-function countdown() {
-  let cdTimer = 5                                      // Called when user is created
-  const cd = setInterval(function () {                             // decrement by 1 
-    cdTimer -= 1
-    countdownElement.innerText = cdTimer
-    if (cdTimer === 0) {
-      wordInput.disabled = false
-      clearInterval(cd)
-    }                   // append to DOM
-  }, 1000)
-}
 
   function stop() {
     clearInterval(clock); // STOPS the timer
