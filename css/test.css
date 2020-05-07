@@ -7,12 +7,6 @@
     text-decoration: underline;
 }
 
-.typewriter{
-    font-family: American Typewriter;
-    /* font-style: 300; */
-    /* font-size: larger; */
-    font-size: 10px;
-}
 
 .grid-container {
     display: grid;
@@ -22,10 +16,14 @@
     grid-row-gap: 5px;
 }
 
-.typewriter {  /* √ div 1 */
+.typewriter h1 {  /* √ div 1 */
+    font-family: American Typewriter, serif;
     grid-area: 1 / 1 / 2 / 6; 
     background-color: mediumslateblue;
     text-align: center;
+    font-weight: lighter;
+    font-style: oblique;
+
 }   
 .Quote-Display { /* √ div 2 */
     grid-area: 4 / 2 / 5 / 5; 
