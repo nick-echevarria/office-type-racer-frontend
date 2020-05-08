@@ -81,30 +81,30 @@ document.addEventListener("DOMContentLoaded", () => {
       }),
     });
   }
-  // T O G G L E S
-  function toggleLogInForm() {
-    if (form.style.display === "none") {
-      form.style.display = "block";
-    } else {
-      form.style.display = "none";
+    // T O G G L E S
+    function toggleLogInForm() {
+        if (form.style.display === "none") {
+            form.style.display = "block";
+        } else {
+            form.style.display = "none";
+        }
     }
-  }
 
-  function toggleReplayButton() {
-    if (replayButton.style.display === "none") {
-      replayButton.style.display = "block";
-    } else {
-      replayButton.style.display = "none";
+    function toggleReplayButton() {
+        if (replayButton.style.display === "none") {
+            replayButton.style.display = "block";
+        } else {
+            replayButton.style.display = "none";
+        }
     }
-  }
 
-  function toggleWelcomeText() {
-    if (welcomeText.style.visibility === "hidden") {
-      welcomeText.style.visibility = "visible";
-    } else {
-      welcomeText.style.visibility = "hidden";
+    function toggleWelcomeText() {
+        if (welcomeText.style.visibility === "hidden") {
+            welcomeText.style.visibility = "visible";
+        } else {
+            welcomeText.style.visibility = "hidden";
+        }
     }
-  }
 
     function toggleCountdownText() {
         if (countdownContainer.style.visibility === "hidden") {
@@ -112,11 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             countdownContainer.style.visibility = "hidden";
         }
-    }
-
-
-
-  
+    }  
 
   // R E P L A Y  B U T T O N  L I S T E N E R
 
@@ -178,6 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
     quote.split("").forEach((character) => {
       characterSpan = document.createElement("span"); // create span tag for each letter
       characterSpan.innerText = character; // append letter to span
+      characterSpan.style.fontFamily = "monospace"
       currentWord.appendChild(characterSpan); // append entire element to div
       currentWord.dataset.id = pick.id; // quote ID location
     });

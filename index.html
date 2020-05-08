@@ -28,8 +28,11 @@
 
         <div class = 'Quote-Input'>
             <p class="lead" style="visibility: hidden">Dunder Mifflin welcomes you,<span class="text-success" id="username">...</span></p>
+           
             <div style="visibility: hidden" id='countdown-container'> Get ready! Start typing in: <span id='countdown'>5</span> </div>
+            
             <input type="text" class="form-control form-control-lg" placeholder="Type the quote here!" id="word-input" autofocus>
+            
             <h4 class="mt-3" id="message"></h4>
             <!-- Replay Button-->
                 <div id="replay-container">
@@ -44,13 +47,13 @@
         <!-- Time & Score Columns -->
         
             <div class="Timer">
-                <h3>Time:
+                <h3>Time: <br>
                     <span id="time">0</span>
                 </h3>
             </div>
 
             <div class="WPM">
-                <h3>Words Per Minute:
+                <h3>Words Per Minute:<br>
                     <span id="score">0</span>
                 </h3>
             </div>

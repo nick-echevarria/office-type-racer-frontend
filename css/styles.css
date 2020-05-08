@@ -45,7 +45,6 @@ span{
 .Office-Photo { /* div 4 */
     grid-area: 2 / 2 / 4 / 5; 
     background-color: rgb(114, 180, 180);
-    object-fit: contain;
 } 
 .Jam {
     display: block;
@@ -56,6 +55,7 @@ span{
 .formCSS { /* div 5 */
     grid-area: 4 / 1 / 6 / 2; 
     background-color: mediumpurple;
+    text-align: center
 }  
 .WPM { /* div 6 */
     grid-area: 2 / 1 / 3 / 2; 
@@ -80,25 +80,11 @@ h3 { /* div 5 */
     text-align: center;
 } 
 
-#login-field { /* div 5 */
-    position: relative; 
-    top: 25px;
-    left: 25px;
-} 
-
-#login-submit { /* div 5 */
-    position: relative; 
-    top: 25px;
-    left: 65px
-} 
-
-#username-text { 
-    text-align: center
-}
-
 #replay { 
     position: relative;
-    left: 240px
+    left: 240px;
 }
+
+
 
 
