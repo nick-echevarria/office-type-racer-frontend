@@ -45,6 +45,7 @@ span{
 .Office-Photo { /* div 4 */
     grid-area: 2 / 2 / 4 / 5; 
     background-color: rgb(114, 180, 180);
+    object-fit: contain;
 } 
 .Jam {
     display: block;
@@ -83,7 +84,6 @@ h3 { /* div 5 */
     position: relative; 
     top: 25px;
     left: 25px;
-    text-align: center
 } 
 
 #login-submit { /* div 5 */
@@ -100,3 +100,5 @@ h3 { /* div 5 */
     position: relative;
     left: 240px
 }
+
+
