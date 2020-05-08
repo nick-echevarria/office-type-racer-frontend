@@ -19,7 +19,9 @@ let form = document.querySelector(".form");
 let currentUsername = document.querySelector(".text-success");
 let replayButton = document.querySelector("#replay");
 let countdownElement = document.querySelector("#countdown");
-let welcomeMessage = document.querySelector(".lead")
+let welcomeText = document.querySelector(".lead")
+let countdownContainer = document.querySelector("#countdown-container")
+
 
 // D E C L A R A T I O N S
 let wordCount;
@@ -96,13 +98,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function toggleWelcomeMessage() {
-    if (welcomeMessage.style.display === "none") {
-      welcomeMessage.style.display = "block";
+  function toggleWelcomeText() {
+    if (welcomeText.style.visibility === "hidden") {
+      welcomeText.style.visibility = "visible";
     } else {
-      welcomeMessage.style.display = "none";
+      welcomeText.style.visibility = "hidden";
     }
   }
+
+    function toggleCountdownText() {
+        if (countdownContainer.style.visibility === "hidden") {
+            countdownContainer.style.visibility = "visible";
+        } else {
+            countdownContainer.style.visibility = "hidden";
+        }
+    }
+
+
 
   
 
@@ -138,7 +150,8 @@ document.addEventListener("DOMContentLoaded", () => {
           usernameDisplay.dataset.id = data.id; // USERNAME ID LOCATION
           countdown();
           toggleLogInForm();
-          toggleWelcomeMessage();
+          toggleWelcomeText()
+          toggleCountdownText();
         })
         .catch(function (error) {
           console.log(error.message);
